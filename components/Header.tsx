@@ -6,24 +6,14 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Logo from "./Logo";
 import useAuthStore from "@/store/AuthStore";
-import { Database } from "@/types/supabase";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Session } from "@supabase/supabase-js";
 
-export default function Header() {
+export default function Header({ session }: { session: Session | null }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [session, logout] = useAuthStore((state) => [
-    state.session,
+  const [logout] = useAuthStore((state) => [
+    // state.session,
     state.logout,
   ]);
-
-  const supabase = createClientComponentClient<Database>();
-
-  useEffect(() => {
-    console.log(session);
-    const data = supabase.auth.onAuthStateChange((event, session) => {
-      console.log(event, session);
-    });
-  }, []);
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white supports-backdrop-blur:bg-white/95 dark:bg-slate-900/75">
@@ -58,24 +48,24 @@ export default function Header() {
             href="/all-jobs"
             className="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200"
           >
-            Features
+            All jobs
           </a>
           <a
             href="/add-job"
             className="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200"
           >
-            Marketplace
+            Add job
           </a>
           <a
             href="profile"
             className="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-200"
           >
-            Company
+            Profile
           </a>
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {session ? (
+          {session != null ? (
             <a
               href="#"
               onClick={() => logout()}
@@ -169,7 +159,7 @@ export default function Header() {
                 >
                   Log in
                 </a>
-                {session ? (
+                {session != null ? (
                   <a
                     href="#"
                     onClick={() => logout()}

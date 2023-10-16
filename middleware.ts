@@ -19,9 +19,13 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/signin", req.url));
   }
 
+  await supabase.auth.getSession();
+
   return res;
 }
 
 export const config = {
-  matcher: ["/", "/account"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|assets|images|favicon.ico|sw.js|monitoring|js).*)",
+  ],
 };

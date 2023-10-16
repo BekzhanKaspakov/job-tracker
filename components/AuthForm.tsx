@@ -18,7 +18,7 @@ export default function AuthForm() {
             supabaseClient={supabase}
             view="sign_in"
             appearance={{ theme: ThemeSupa }}
-            theme="default"
+            theme="dark"
             showLinks={false}
             providers={[]}
             redirectTo="http://localhost:3000/auth/callback"
@@ -40,7 +40,7 @@ export default function AuthForm() {
             supabaseClient={supabase}
             view="sign_up"
             appearance={{ theme: ThemeSupa }}
-            theme="default"
+            theme="dark"
             showLinks={false}
             providers={[]}
             redirectTo="http://localhost:3000/auth/callback"
@@ -53,15 +53,6 @@ export default function AuthForm() {
           </p>
         </>
       )}
-      {/* <Auth
-        supabaseClient={supabase}
-        view="magic_link"
-        appearance={{ theme: ThemeSupa }}
-        theme="dark"
-        showLinks={false}
-        providers={[]}
-        redirectTo="http://localhost:3000/auth/callback"
-      /> */}
     </>
   );
 }
