@@ -1,8 +1,9 @@
-import Header from "@/components/Header";
+import Header from "@/app/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getSession } from "./supabase-server";
+import SupabaseProvider from "./supabase-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getSession();
-  console.log(session);
-
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className}>
-        <Header session={session} />
+        <SupabaseProvider>
+          <Header />
+        </SupabaseProvider>
         {children}
       </body>
     </html>

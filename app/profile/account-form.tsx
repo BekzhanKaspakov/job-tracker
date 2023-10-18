@@ -6,18 +6,28 @@ import {
 } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/types/supabase";
 
-export default function AccountForm({ session }: { session: Session | null }) {
+export default function AccountForm() {
   const supabase = createClientComponentClient<Database>();
   const [loading, setLoading] = useState(true);
   const [fullname, setFullname] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [website, setWebsite] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const user = session?.user;
+
+  useEffect(() => {
+    supabase.auth.getSession().then((res) => {
+      setSession(res.data.session);
+    });
+  }, []);
+
+  // const user = session?.user;
 
   const getProfile = useCallback(async () => {
     try {
       setLoading(true);
+      console.log("user?.id", user?.id);
 
       let { data, error, status } = await supabase
         .from("profiles")
@@ -36,7 +46,8 @@ export default function AccountForm({ session }: { session: Session | null }) {
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
-      alert("Error loading user data!");
+      console.log(error);
+      // alert("Error loading user data!");
     } finally {
       setLoading(false);
     }
@@ -206,9 +217,10 @@ export default function AccountForm({ session }: { session: Session | null }) {
           <div className="col-span-full">
             <button
               className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 dark:bg-gray-700 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-              onClick={() =>
-                updateProfile({ fullname, username, website, avatar_url })
-              }
+              onClick={(e) => {
+                e.preventDefault();
+                updateProfile({ fullname, username, website, avatar_url });
+              }}
               disabled={loading}
             >
               {loading ? "Loading ..." : "Update"}

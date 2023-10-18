@@ -5,15 +5,23 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Logo from "./Logo";
-import useAuthStore from "@/store/AuthStore";
-import { Session } from "@supabase/supabase-js";
+import { Session, createClient } from "@supabase/supabase-js";
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
+import { useSupabase } from "../supabase-provider";
 
-export default function Header({ session }: { session: Session | null }) {
+export default function Header() {
+  //TODO: find out how to get user in client component
+  const { supabase } = useSupabase();
+
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then((res) => {
+      setSession(res.data.session);
+    });
+  }, []);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logout] = useAuthStore((state) => [
-    // state.session,
-    state.logout,
-  ]);
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white supports-backdrop-blur:bg-white/95 dark:bg-slate-900/75">
@@ -68,7 +76,7 @@ export default function Header({ session }: { session: Session | null }) {
           {session != null ? (
             <a
               href="#"
-              onClick={() => logout()}
+              onClick={() => supabase.auth.signOut()}
               className="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-200"
             >
               Log out <span aria-hidden="true">&rarr;</span>
@@ -162,7 +170,7 @@ export default function Header({ session }: { session: Session | null }) {
                 {session != null ? (
                   <a
                     href="#"
-                    onClick={() => logout()}
+                    onClick={() => supabase.auth.signOut()}
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50  dark:text-slate-200"
                   >
                     Log out
