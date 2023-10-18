@@ -5,6 +5,7 @@ import {
   createClientComponentClient,
 } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/types/supabase";
+import Avatar from "./Avatar";
 
 export default function AccountForm() {
   const supabase = createClientComponentClient<Database>();
@@ -93,6 +94,17 @@ export default function AccountForm() {
         <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
           Profile
         </h2>
+        {user && (
+          <Avatar
+            uid={user!.id}
+            url={avatar_url}
+            size={150}
+            onUpload={(url) => {
+              setAvatarUrl(url);
+              updateProfile({ fullname, username, website, avatar_url: url });
+            }}
+          />
+        )}
         <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
           This information will be displayed publicly so be careful what you
           share.

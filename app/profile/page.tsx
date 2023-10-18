@@ -1,6 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import AccountForm from "./account-form";
+import AccountForm from "../components/AccountForm";
 import { Database } from "@/types/supabase";
 import SupabaseProvider from "../supabase-provider";
 
