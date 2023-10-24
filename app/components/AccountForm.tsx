@@ -21,7 +21,7 @@ export default function AccountForm() {
     supabase.auth.getSession().then((res) => {
       setSession(res.data.session);
     });
-  }, []);
+  }, [supabase.auth]);
 
   // const user = session?.user;
 
@@ -125,7 +125,7 @@ export default function AccountForm() {
                 name="username"
                 id="username"
                 autoComplete="username"
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-2 border-gray-300"
+                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-2 border-gray-300"
                 placeholder="janesmith"
                 value={username || ""}
                 onChange={(e) => setUsername(e.target.value)}
@@ -146,7 +146,7 @@ export default function AccountForm() {
                 name="fullname"
                 id="fullname"
                 autoComplete="fullname"
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
+                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
                 placeholder="janesmith"
                 value={fullname || ""}
                 onChange={(e) => setFullname(e.target.value)}
@@ -168,7 +168,7 @@ export default function AccountForm() {
                 name="avatar_url"
                 id="avatar_url"
                 autoComplete="avatar_url"
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
+                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
                 placeholder="janesmith"
                 value={avatar_url || ""}
                 onChange={(e) => setAvatarUrl(e.target.value)}
@@ -190,7 +190,7 @@ export default function AccountForm() {
                 name="website"
                 id="website"
                 autoComplete="website"
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:text-gray-100 dark:bg-gray-700 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
+                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:text-gray-100 dark:bg-gray-700 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
                 placeholder="janesmith"
                 value={website || ""}
                 onChange={(e) => setWebsite(e.target.value)}

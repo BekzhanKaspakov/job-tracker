@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getSession } from "./supabase-server";
 import SupabaseProvider from "./supabase-provider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default async function RootLayout({
         <SupabaseProvider>
           <Header />
         </SupabaseProvider>
+        <Toaster />
         {children}
       </body>
     </html>
