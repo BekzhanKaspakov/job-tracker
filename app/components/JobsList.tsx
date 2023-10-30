@@ -2,6 +2,7 @@
 import { use, useCallback, useEffect, useState } from "react";
 import { useSupabase } from "../supabase-provider";
 import { Session } from "@supabase/supabase-js";
+import { useQuery, useQueryClient } from "react-query";
 
 interface Job {
   id: string;
@@ -14,7 +15,7 @@ interface Job {
 
 const placeHolderJobs: Job[] = [
   {
-    id: "1",
+    id: "1as",
     company: "Microsoft",
     title: "Software Engineer",
     date: "2022-01-01",
@@ -22,7 +23,7 @@ const placeHolderJobs: Job[] = [
     status: "Applied",
   },
   {
-    id: "4",
+    id: "4dsa",
     company: "Google",
     title: "Product Manager",
     date: "2022-02-01",
@@ -30,7 +31,7 @@ const placeHolderJobs: Job[] = [
     status: "Interviewing",
   },
   {
-    id: "3",
+    id: "3asd",
     company: "Amazon",
     title: "Data Scientist",
     date: "2022-03-01",
@@ -85,39 +86,31 @@ export const renderStatus = (status: string) => {
 };
 
 export default function JobsList() {
-  const [loading, setLoading] = useState<boolean>(false);
+  // const [loading, setLoading] = useState<boolean>(false);
   const [session, setSession] = useState<Session | null>(null);
   const user = session?.user;
   const { supabase } = useSupabase();
-  const [jobs, setJobs] = useState<Job[]>([]);
-
-  const getJobs = useCallback(async () => {
-    if (!user) return;
-    try {
-      setLoading(true);
-
+  // const [jobs, setJobs] = useState<Job[]>([]);
+  const queryClient = useQueryClient();
+  const { isLoading, data } = useQuery(
+    ["jobs", { uuid: user?.id }],
+    async ({ queryKey }) => {
+      const [, { uuid }] = queryKey as any;
+      if (!uuid) return;
       let { data, error, status } = await supabase
         .from("jobs")
         .select(`id, company, title, date, location, status`)
-        .eq("user_id", user?.id);
+        .eq("user_id", uuid);
 
       if (error && status !== 406) {
         throw error;
       }
 
-      if (data) {
-        setJobs([...data, ...placeHolderJobs]);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+      return data;
     }
-  }, [user, supabase]);
+  );
 
-  useEffect(() => {
-    getJobs();
-  }, [user, getJobs]);
+  const jobs = (!isLoading && data) || [];
 
   useEffect(() => {
     supabase.auth.getSession().then((res) => {
