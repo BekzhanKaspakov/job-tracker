@@ -37,7 +37,7 @@ export default function AddJobForm() {
   }, [supabase.auth]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setFormData({
       ...formData,
@@ -75,8 +75,8 @@ export default function AddJobForm() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-lg shadow-md">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="rounded-lg bg-white shadow-md">
         <form onSubmit={handleSubmit}>
           <div className="p-4">
             <div className="my-3">
@@ -92,7 +92,7 @@ export default function AddJobForm() {
                 id="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-gray-300 drop-shadow"
+                className="block flex-1 rounded-md border-0 border-solid border-gray-300 py-1.5 pl-1 text-gray-900 drop-shadow focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
               />
             </div>
             <div className="my-3">
@@ -108,7 +108,7 @@ export default function AddJobForm() {
                 id="title"
                 value={formData.title}
                 onChange={handleChange}
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-gray-300 drop-shadow"
+                className="block flex-1 rounded-md border-0 border-solid border-gray-300 py-1.5 pl-1 text-gray-900 drop-shadow focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
               />
             </div>
             <div className="my-3">
@@ -124,7 +124,7 @@ export default function AddJobForm() {
                 id="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-gray-300 drop-shadow"
+                className="block flex-1 rounded-md border-0 border-solid border-gray-300 py-1.5 pl-1 text-gray-900 drop-shadow focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
               />
             </div>
             <div className="my-3">
@@ -140,7 +140,7 @@ export default function AddJobForm() {
                 id="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-gray-300 drop-shadow"
+                className="block flex-1 rounded-md border-0 border-solid border-gray-300 py-1.5 pl-1 text-gray-900 drop-shadow focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
               />
             </div>
             <div className="my-3">
@@ -155,7 +155,7 @@ export default function AddJobForm() {
                 id="status"
                 value={formData.status}
                 onChange={handleChange}
-                className="block flex-1 border-0 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-gray-300 drop-shadow"
+                className="block flex-1 rounded-md border-0 border-solid border-gray-300 py-1.5 pl-1 text-gray-900 drop-shadow focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
               >
                 <option value="Applied">Applied</option>
                 <option value="Interviewing">Interviewing</option>
@@ -167,13 +167,13 @@ export default function AddJobForm() {
             <div className="flex justify-end p-4">
               <button
                 type="submit"
-                className="bg-green-100 hover:bg-green-500 text-green-900 font-bold py-2 px-4 rounded mr-2"
+                className="mr-2 rounded bg-green-100 px-4 py-2 font-bold text-green-900 hover:bg-green-500"
               >
                 Save
               </button>
               <button
                 type="button"
-                className="bg-red-200 hover:bg-red-500 text-red-800 font-bold py-2 px-4 rounded"
+                className="rounded bg-red-200 px-4 py-2 font-bold text-red-800 hover:bg-red-500"
                 // onClick={() => handleDelete(job.id)}
               >
                 Delete

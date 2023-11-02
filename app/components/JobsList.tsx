@@ -53,7 +53,7 @@ export const renderStatus = (status: string) => {
     case "Applied":
       return (
         <p className="mt-2">
-          <span className="text-sm text-white bg-blue-500 font-bold rounded px-3 py-2 inline">
+          <span className="inline rounded bg-blue-500 px-3 py-2 text-sm font-bold text-white">
             {status}
           </span>
         </p>
@@ -61,7 +61,7 @@ export const renderStatus = (status: string) => {
     case "Interviewing":
       return (
         <p className="mt-2">
-          <span className="text-sm text-white bg-yellow-500 font-bold rounded px-3 py-2 inline">
+          <span className="inline rounded bg-yellow-500 px-3 py-2 text-sm font-bold text-white">
             {status}
           </span>
         </p>
@@ -69,7 +69,7 @@ export const renderStatus = (status: string) => {
     case "Offer Received":
       return (
         <p className="mt-2">
-          <span className="text-sm text-white bg-lime-700 font-bold rounded px-3 py-2 inline">
+          <span className="inline rounded bg-lime-700 px-3 py-2 text-sm font-bold text-white">
             {status}
           </span>
         </p>
@@ -77,7 +77,7 @@ export const renderStatus = (status: string) => {
     case "Rejected":
       return (
         <p className="mt-2">
-          <span className="text-sm text-white bg-red-500 font-bold rounded px-3 py-2 inline">
+          <span className="inline rounded bg-red-500 px-3 py-2 text-sm font-bold text-white">
             {status}
           </span>
         </p>
@@ -107,7 +107,7 @@ export default function JobsList() {
       }
 
       return data;
-    }
+    },
   );
 
   const jobs = (!isLoading && data) || [];
@@ -120,85 +120,85 @@ export default function JobsList() {
 
   return (
     <>
-      <section className="bg-white rounded-lg shadow-md p-4 w-full">
+      <section className="w-full rounded-lg bg-white p-4 shadow-md">
         <form className="w-full max-w-lg">
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div className="-mx-3 mb-6 flex flex-wrap">
+            <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
                 htmlFor="grid-first-name"
               >
                 First Name
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="mb-3 block w-full appearance-none rounded border border-red-500 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none"
                 id="grid-first-name"
                 type="text"
                 placeholder="Jane"
               />
-              <p className="text-red-500 text-xs italic">
+              <p className="text-xs italic text-red-500">
                 Please fill out this field.
               </p>
             </div>
-            <div className="w-full md:w-1/2 px-3">
+            <div className="w-full px-3 md:w-1/2">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
                 htmlFor="grid-last-name"
               >
                 Last Name
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                 id="grid-last-name"
                 type="text"
                 placeholder="Doe"
               />
             </div>
           </div>
-          <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="-mx-3 mb-6 flex flex-wrap">
             <div className="w-full px-3">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
                 htmlFor="grid-password"
               >
                 Password
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                 id="grid-password"
                 type="password"
                 placeholder="******************"
               />
-              <p className="text-gray-600 text-xs italic">
+              <p className="text-xs italic text-gray-600">
                 Make it as long and as crazy as you&apos;d like
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap -mx-3 mb-2">
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <div className="-mx-3 mb-2 flex flex-wrap">
+            <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
                 htmlFor="grid-city"
               >
                 City
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                 id="grid-city"
                 type="text"
                 placeholder="Albuquerque"
               />
             </div>
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
                 htmlFor="grid-state"
               >
                 State
               </label>
               <div className="relative">
                 <select
-                  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                   id="grid-state"
                 >
                   <option>New Mexico</option>
@@ -207,7 +207,7 @@ export default function JobsList() {
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
-                    className="fill-current h-4 w-4"
+                    className="h-4 w-4 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                   >
@@ -216,15 +216,15 @@ export default function JobsList() {
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
               <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
                 htmlFor="grid-zip"
               >
                 Zip
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                 id="grid-zip"
                 type="text"
                 placeholder="90210"
@@ -234,9 +234,9 @@ export default function JobsList() {
         </form>
       </section>
 
-      <section className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+      <section className="grid w-full grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {jobs.map((job) => (
-          <div key={job.id} className="bg-white rounded-lg shadow-md">
+          <div key={job.id} className="rounded-lg bg-white shadow-md">
             <div className="p-4">
               <div className="my-3">
                 <h3 className="text-lg font-medium text-gray-900">
@@ -245,7 +245,7 @@ export default function JobsList() {
                 <p className="mt-2 text-sm text-gray-500">{job.title}</p>
               </div>
               <hr />
-              <div className="grid grid-cols-2 gap-2 my-3">
+              <div className="my-3 grid grid-cols-2 gap-2">
                 <p className="mt-2 text-sm text-gray-500">
                   {renderDate(job.date)}
                 </p>
@@ -255,12 +255,12 @@ export default function JobsList() {
               <div className="flex justify-end p-4">
                 <a
                   href={`/job/${job.id}`}
-                  className="bg-green-100 hover:bg-green-500 text-green-900 font-bold py-2 px-4 rounded mr-2"
+                  className="mr-2 rounded bg-green-100 px-4 py-2 font-bold text-green-900 hover:bg-green-500"
                 >
                   Edit
                 </a>
                 <button
-                  className="bg-red-200 hover:bg-red-500 text-red-800 font-bold py-2 px-4 rounded"
+                  className="rounded bg-red-200 px-4 py-2 font-bold text-red-800 hover:bg-red-500"
                   // onClick={() => handleDelete(job.id)}
                 >
                   Delete

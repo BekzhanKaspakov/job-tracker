@@ -125,7 +125,7 @@ export default function AccountForm() {
                 name="username"
                 id="username"
                 autoComplete="username"
-                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-solid border-2 border-gray-300"
+                className="block flex-1 rounded-md border-2 border-solid border-gray-300 py-1.5 pl-1 text-gray-900 focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
                 placeholder="janesmith"
                 value={username || ""}
                 onChange={(e) => setUsername(e.target.value)}
@@ -146,7 +146,7 @@ export default function AccountForm() {
                 name="fullname"
                 id="fullname"
                 autoComplete="fullname"
-                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
+                className="block flex-1 rounded-md border-2 border-gray-300 py-1.5 pl-1 text-gray-900 focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
                 placeholder="janesmith"
                 value={fullname || ""}
                 onChange={(e) => setFullname(e.target.value)}
@@ -168,7 +168,7 @@ export default function AccountForm() {
                 name="avatar_url"
                 id="avatar_url"
                 autoComplete="avatar_url"
-                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:bg-gray-700 dark:text-gray-100 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
+                className="block flex-1 rounded-md border-2 border-gray-300 py-1.5 pl-1 text-gray-900 focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
                 placeholder="janesmith"
                 value={avatar_url || ""}
                 onChange={(e) => setAvatarUrl(e.target.value)}
@@ -190,7 +190,7 @@ export default function AccountForm() {
                 name="website"
                 id="website"
                 autoComplete="website"
-                className="block flex-1 py-1.5 pl-1 text-gray-900 dark:text-gray-100 dark:bg-gray-700 rounded-md focus:ring-0 sm:text-sm sm:leading-6 border-2 border-gray-300"
+                className="block flex-1 rounded-md border-2 border-gray-300 py-1.5 pl-1 text-gray-900 focus:ring-0 dark:bg-gray-700 dark:text-gray-100 sm:text-sm sm:leading-6"
                 placeholder="janesmith"
                 value={website || ""}
                 onChange={(e) => setWebsite(e.target.value)}
@@ -228,7 +228,7 @@ export default function AccountForm() {
           </div> */}
           <div className="col-span-full">
             <button
-              className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 dark:bg-gray-700 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-100"
               onClick={(e) => {
                 e.preventDefault();
                 updateProfile({ fullname, username, website, avatar_url });

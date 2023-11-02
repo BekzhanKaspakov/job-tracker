@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { cache } from "react";
 
 export const createServerSupabaseClient = cache(() =>
-  createServerComponentClient<Database>({ cookies })
+  createServerComponentClient<Database>({ cookies }),
 );
 
 export async function getSession() {

@@ -13,7 +13,7 @@ export default function AllJobs() {
   const queryClient = new QueryClient();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-4">
+    <main className="flex min-h-screen flex-col items-center justify-between gap-4 p-24">
       <SupabaseProvider>
         <QueryClientProvider client={queryClient}>
           <JobsList />
